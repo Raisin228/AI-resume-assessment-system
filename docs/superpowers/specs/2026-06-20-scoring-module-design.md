@@ -121,7 +121,7 @@ scoring_results (
   key_gaps      JSONB NOT NULL,        -- list[str], топ-3 пробела ([] если нет)
   summary       TEXT NOT NULL,         -- Выжимка для рекрутёра
   confidence    FLOAT NOT NULL,        -- 0.0–1.0
-  model_used    VARCHAR NOT NULL,      -- 'deepseek-chat' | 'claude-haiku-4-5' | ...
+  model_used    VARCHAR NOT NULL,      -- 'deepseek-v4-flash' | 'claude-haiku-4-5' | ...
   created_at    TIMESTAMP DEFAULT now(),
   UNIQUE(vacancy_id, candidate_id)     -- один результат на пару
 )
@@ -217,11 +217,12 @@ class CandidateScore(BaseModel):
 | **GigaChat** | Отличная | Среднее для EN | Низкая | Ограниченно |
 | **Anthropic (прямой)** | Нужен VPN/иностр. карта | Высокое | Средняя | Да (tool_use) |
 
-**Выбор по умолчанию: DeepSeek** (`deepseek-chat`)
-- Открытый API, доступен из РФ, принимает рублёвые карты через посредников
+**Выбор по умолчанию: DeepSeek** (`deepseek-v4-flash`)
+- Открытый API, доступен из РФ, оплата через виртуальные карты (E.pn, Flowbit)
 - Поддерживает OpenAI-совместимый function calling
-- DeepSeek-V3: качество сопоставимо с Claude Sonnet при значительно меньшей цене
-- ~$0.0003–0.001 за вызов (дешевле Claude Haiku)
+- Качество сопоставимо с Claude Sonnet при значительно меньшей цене
+- ~$0.14/M input, $0.28/M output; dev-бюджет ~$6–10/мес, первый месяц 5M токенов бесплатно
+- **Миграция:** `deepseek-chat` удаляется 24.07.2026 → использовать `deepseek-v4-flash`
 
 **Архитектура клиента:**
 

@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "ai-resume-assessment"
+version = "0.1.0"
+description = "AI-powered resume assessment system"
+authors = []
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+sqlalchemy = {extras = ["asyncio"], version = "*"}
+asyncpg = "*"
+alembic = "*"
+pydantic = ">=2.7"
+pydantic-settings = "*"
+httpx = "*"
+langgraph = "*"
+langchain-openai = "*"
+langchain-anthropic = "*"
+apscheduler = ">=3.10"
+jinja2 = "*"
+python-multipart = "*"
+pdfminer-six = "*"
+sse-starlette = "*"
+openai = "*"
+anthropic = "*"
+psycopg2-binary = "^2.9.12"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+pytest-asyncio = "*"
+httpx = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "module"
