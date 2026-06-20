@@ -17,7 +17,8 @@
 ## LLM-параметры
 
 - Провайдер: `LLM_PROVIDER=deepseek|openrouter|anthropic` (дефолт: `deepseek`)
-- Модель: `LLM_MODEL` env var (дефолт зависит от провайдера: `deepseek-chat` / `claude-haiku-4-5-20251001`)
+- Модель: `LLM_MODEL` env var (дефолт: `deepseek-v4-flash` / `claude-haiku-4-5-20251001`)
+- **Важно:** `deepseek-chat` и `deepseek-reasoner` удаляются 24.07.2026 → использовать `deepseek-v4-flash`
 - `temperature=0` для детерминированного скоринга
 - Structured output только через function calling / tool_use → Pydantic model
 - Никогда не парсить JSON из сырого текстового ответа
