@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
     # Database
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/resume_scoring"
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5433/resume_scoring"
 
     # LLM
     LLM_PROVIDER: Literal["deepseek", "openrouter", "anthropic"] = "deepseek"
